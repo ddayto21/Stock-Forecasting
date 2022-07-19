@@ -34,3 +34,24 @@ plt.show()
 ```
 
 ![S&P-Plot](images/s&p-plot.png)
+
+## Set up Target Variables
+
+```python
+sp500["Tomorrow"] = sp500["Close"].shift(-1)
+sp500["Target"] = (sp500["Tomorrow"] > sp500["Close"]).astype(int) 
+sp500 = sp500.loc["1990-01-01":].copy()
+```
+
+## Train ML Model
+
+### Install sklearn library
+```
+$ pip install sklearn
+```
+
+### Import Random Forrest Classifier
+```python
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import precision_score
+```
