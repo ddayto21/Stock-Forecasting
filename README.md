@@ -55,3 +55,8 @@ $ pip install sklearn
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import precision_score
 ```
+
+### Use S&P Time-Series Data to Train ML Model
+```python
+model = RandomForestClassifier(n_estimators=200, min_samples_split=50, random_state=1) 
+```
