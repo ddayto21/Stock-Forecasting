@@ -16,8 +16,6 @@ sp500 = yf.Ticker("^GSPC")
 sp500 = sp500.history(period="max")
 ```
 
-## Plot S&P 500 Index
-
 ## Install matplotlib
 
 ```
@@ -29,6 +27,10 @@ $ pip install matplotlib
 import matplotlib.pyplot as plt
 ```
 
+## Plot S&P 500 Index
 ```python
 plt.plot(sp500.index, sp500["Close"])
+plt.show()
 ```
+
+![S&P-Plot](images/s&p-plot.png)
