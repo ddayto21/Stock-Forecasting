@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def backtest(data, model, predictors, start=2500, step=250):
     """
     Backtest the model using a rolling window approach.
@@ -7,9 +8,13 @@ def backtest(data, model, predictors, start=2500, step=250):
     print("[+] Backtesting...")
     all_predictions = []
 
-    for x in range(start, data.shape[0], step):
+    for x in range(
+        start, data.shape[0] - step + 1, step
+    ):  # Ensure correct number of windows
         train = data.iloc[:x].copy()
-        test = data.iloc[x:x+step].copy()
+        test = data.iloc[x : x + step].copy()
+        if test.empty:
+            break
         predictions = predict(train, test, predictors, model)
         combined = pd.concat([test["Target"], predictions], axis=1)
         all_predictions.append(combined)
